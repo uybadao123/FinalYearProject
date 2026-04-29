@@ -1,0 +1,50 @@
+[
+  {
+    "id": "preset_npk_balanced",
+    "name": "Balanced NPK (20-20-20)",
+    "n_pct": 20, "p_pct": 20, "k_pct": 20,
+    "description": "General purpose fertilizer for all growth stages."
+  },
+ 
+  {
+    "id": "preset_np_balanced with k",
+    "name": "NPK Phu My 20-20-15",
+    "n_pct": 20, "p_pct": 20, "k_pct": 15,
+    "description": "General purpose fertilizer for all stages."
+  },
+
+  {
+    "id": "preset_npk_high_p_balance_n_and_k",
+    "name": "Starter Bloom (15-30-15)",
+    "n_pct": 15, "p_pct": 30, "k_pct": 15,
+    "description": "High phosphorus for root development and flowering."
+  },
+ 
+  {
+    "id": "preset_npk_high_k",
+    "name": "Fruit Booster (10-10-30)",
+    "n_pct": 10, "p_pct": 10, "k_pct": 30,
+    "description": "High potassium to improve fruit quality and sweetness."
+  },
+ 
+  {
+    "id": "preset_npk_high_n",
+    "name": "Vegetative Growth (30-10-10)",
+    "n_pct": 30, "p_pct": 10, "k_pct": 10,
+    "description": "High nitrogen to promote lush leaf growth."
+  },
+  
+  {
+    "id": "preset_npk_balanced n-p_and_high_k",
+    "name": "Slow-Release (14-14-14)",
+    "n_pct": 12, "p_pct": 12, "k_pct": 17,
+    "description": "For balanced growth and increased production."
+  },
+
+  {
+    "id": "preset_organic_compost",
+    "name": "Organic Compost",
+    "n_pct": 5, "p_pct": 5, "k_pct": 5,
+    "description": "Natural fertilizer rich in organic matter and micronutrients."
+  }
+]

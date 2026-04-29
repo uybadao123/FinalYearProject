@@ -1,0 +1,1 @@
+#Neccessary dependencies for the backend application, including FastAPI for API development, SQLAlchemy for database interactions, and additional libraries for handling CORS, environment variables, and data validation.

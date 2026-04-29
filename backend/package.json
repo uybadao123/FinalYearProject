@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "sqlalchemy": "^10.1.1",
+    "uvicorn": "^0.0.1-security"
+  }
+}
