@@ -1,9 +1,4 @@
 // (tabs)/_layout.tsx
-
-
-// This layout defines the bottom tab navigation structure for the app, providing quick access to the main sections: Home, My Garden, Handbook, and Profile.
-// Each tab is associated with a specific screen and icon, ensuring intuitive navigation for users as they manage their garden zones and access resources.
-
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';

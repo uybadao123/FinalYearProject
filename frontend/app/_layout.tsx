@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../src/config/firebase'; // Your specific path
+import { auth } from '../src/config/firebase';
 import { ActivityIndicator, View } from 'react-native';
 
 
-/**
- * ROOT LAYOUT
- * Manages global authentication state and top-level stack navigation.
- */
 export default function RootLayout() {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState<any>(null);

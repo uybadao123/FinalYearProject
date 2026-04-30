@@ -1,5 +1,4 @@
 // app/(tabs)/index.tsx
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   View, Text, StyleSheet, ScrollView, FlatList,
@@ -9,7 +8,6 @@ import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Location from 'expo-location';
 
-// Firebase & API Service
 import { auth } from '../../src/config/firebase';
 import { MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { api } from '../../src/api/api';
@@ -20,19 +18,15 @@ export default function DashboardScreen() {
   const router = useRouter();
   const user = auth.currentUser;
   if (!user) return router.push("/login");
-
   const hasInitialized = useRef(false);
-
   const weatherIntervalRef = useRef<any>(null);
 
-  // State variables
   const [zones, setZones] = useState<any[]>([]);
   const [activities, setActivities] = useState<any[]>([]);
   const [featuredCrops, setFeaturedCrops] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
-  // Weather state with default values to prevent undefined errors before data loads
   const [weather, setWeather] = useState<any>({
     temp: '--',
     humidity: 0,
@@ -55,28 +49,23 @@ export default function DashboardScreen() {
   const refreshDashboardData = useCallback(async (isManual: boolean = false) => {
     if (isManual) setRefreshing(true);
 
-    // 
     await fetchWeatherUpdate();
 
     try {
-      //
       const results = await Promise.allSettled([
         api.garden.getAllGardenZones(),
         api.crop.getAll(),
         api.dss.syncDashboard()
       ]);
 
-      // 
       const zonesData = results[0].status === 'fulfilled' ? results[0].value : [];
       const cropsData = results[1].status === 'fulfilled' ? results[1].value : [];
       const dssData = results[2].status === 'fulfilled' ? results[2].value : [];
 
-      // 
       setZones(Array.isArray(zonesData) ? zonesData : []);
       setFeaturedCrops(Array.isArray(cropsData) ? cropsData.slice(0, 4) : []);
       setActivities(Array.isArray(dssData) ? dssData : []);
 
-      //
       results.forEach((res, index) => {
         if (res.status === 'rejected') {
           console.error(`Service ${index} failed:`, res.reason);
@@ -96,7 +85,6 @@ export default function DashboardScreen() {
    * WEATHER UPDATE LOGIC
    */
   const fetchWeatherUpdate = useCallback(async () => {
-    // By default
     let lat = 10.7769;
     let lon = 106.6602;
     let readableAddress = "Ho Chi Minh City, Vietnam";
@@ -143,7 +131,6 @@ export default function DashboardScreen() {
       hasInitialized.current = true;
     }
 
-    // Set up an interval to refresh weather data
     weatherIntervalRef.current = setInterval(() => fetchWeatherUpdate(), 3600000);
 
     return () => {

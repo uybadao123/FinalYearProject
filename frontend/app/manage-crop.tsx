@@ -109,7 +109,7 @@ export default function ManageCropScreen() {
           onPress: async () => {
             try {
               setUpdatingCrop(cropId);
-              await api.crop.deleteCrop(cropId); // Ensure this method exists in your API helper
+              await api.crop.deleteCrop(cropId);
 
               setCrops(prevCrops => prevCrops.filter(crop => crop.id !== cropId));
               Alert.alert('Deleted', 'Crop has been removed successfully');

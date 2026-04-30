@@ -1,5 +1,4 @@
 // app/zone-details.tsx
-
 import React, { useState, useEffect } from 'react';
 import {
   View, Text, StyleSheet,
@@ -9,7 +8,6 @@ import {
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { MaterialIcons, FontAwesome5, Ionicons, Entypo } from '@expo/vector-icons';
 import { api } from '../src/api/api';
-
 
 export default function ZoneDetailsScreen() {
   const { zoneId } = useLocalSearchParams();

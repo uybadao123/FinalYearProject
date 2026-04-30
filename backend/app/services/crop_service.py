@@ -101,7 +101,7 @@ class CropService:
         elif current_status == "pending":
             new_status = "published"
         else:
-            new_status = "published"  # Default fallback
+            new_status = "published"
         
         update_data = {
             "status": new_status, 

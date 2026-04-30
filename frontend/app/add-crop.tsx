@@ -16,8 +16,6 @@ import * as ImagePicker from 'expo-image-picker';
 export default function AddCropScreen() {
   const router = useRouter();
   const user = auth.currentUser;
-
-  // Check login
   if (!user) {
     Alert.alert("Unauthorized", "Please log in to add crops.");
     router.push('/login');
@@ -27,7 +25,6 @@ export default function AddCropScreen() {
   const [saving, setSaving] = useState(false);
   const [image, setImage] = useState<string | null>(null);
 
-  // Khởi tạo form trống hoàn toàn
   const [form, setForm] = useState<any>({
     name: '',
     family: '',
@@ -199,7 +196,7 @@ export default function AddCropScreen() {
           />
         </View>
 
-        {/* CẤU HÌNH TIMELINE */}
+        {/* STAGE TIMELINE */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Growing Stage</Text>
           <View style={styles.row}>

@@ -1,3 +1,4 @@
+// app/(tabs)/garden.tsx
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
   View, Text, StyleSheet, FlatList, 
@@ -20,7 +21,6 @@ export default function GardenGridTab() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
-  // Auth Guard: Moved inside useEffect to prevent render-phase navigation
   useEffect(() => {
     if (!user) {
       router.replace("/login");

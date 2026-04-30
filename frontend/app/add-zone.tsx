@@ -10,7 +10,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { auth } from '../src/config/firebase';
 import { api } from '../src/api/api';
 
-
 const STORAGE_KEY = '@recent_locations';
 const ZONE_TYPES = [
   { id: 'frontyard', label: 'Frontyard', icon: 'fence' },

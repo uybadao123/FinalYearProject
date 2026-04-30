@@ -5,7 +5,7 @@ import { enUS } from 'date-fns/locale';
 import {
   View, Text, StyleSheet, ScrollView,
   TouchableOpacity, Alert, ActivityIndicator,
-  Dimensions, RefreshControl // Added RefreshControl
+  Dimensions, RefreshControl
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { auth } from '../src/config/firebase';
@@ -27,7 +27,7 @@ export default function PlotDetailScreen() {
 
   const { id } = useLocalSearchParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false); // New Refresh State
+  const [refreshing, setRefreshing] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [plotData, setPlotData] = useState<any>(null);
   const [logs, setLogs] = useState<any[]>([]);
@@ -84,7 +84,7 @@ export default function PlotDetailScreen() {
     loadAllData().finally(() => setLoading(false));
   }, [id]);
 
-  // 4. Handlers
+
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
     await loadAllData();
@@ -121,7 +121,7 @@ export default function PlotDetailScreen() {
       }
 
       Alert.alert("Success", "Fertilized!");
-      await loadAllData(); // Refresh everything
+      await loadAllData();
     } catch (e) {
       console.log("Catch error:", e);
     } finally {

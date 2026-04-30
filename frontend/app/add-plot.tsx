@@ -30,7 +30,6 @@ export default function AddPlotScreen() {
     const user = auth.currentUser;
     if (!user) return router.push("/login");
 
-    // Listen Garden Zones (Real-time)
     const unsub = onSnapshot(query(collection(db, "garden_zones"), where("userId", "==", user.uid)), (snap) => {
       setZones(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     });

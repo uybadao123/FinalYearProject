@@ -1,4 +1,4 @@
-// (tabs)/handbook.tsx
+// app/(tabs)/handbook.tsx
 
 import React, { useState, useEffect } from 'react';
 import {
@@ -10,13 +10,11 @@ import { MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { auth } from '@/src/config/firebase';
 import { api } from '@/src/api/api';
 
-
 export default function HandbookScreen() {
   const router = useRouter();
   const user = auth.currentUser;
   if (!user) return router.push("/login");
 
-  // State for crop data and loading status
   const [crops, setCrops] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -102,7 +100,7 @@ export default function HandbookScreen() {
             onRefresh={() => fetchHandbook(true)}
             colors={['#1B5E20']}
             tintColor="#1B5E20"
-            title="Kéo xuống để tải lại"
+            title="Pull to Refresh"
             titleColor="#1B5E20"
           />
         }

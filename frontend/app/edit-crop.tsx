@@ -35,7 +35,7 @@ export default function EditCropScreen() {
     name: '',
     family: '',
     description: '',
-    image_url: '', // Thêm field này để lưu link ảnh
+    image_url: '',
     status: 'pending',
     growth_timeline: { 
       seedling_end: 14, 
@@ -131,7 +131,7 @@ export default function EditCropScreen() {
     }
   };
 
-  // ... (Các hàm addDeficiency, updateDeficiency, updateStageFactor giữ nguyên)
+
   const addDeficiency = () => {
     const newDeficiency = { element: '', symptoms: '', solution: '' };
     setForm({ ...form, specific_deficiencies: [...form.specific_deficiencies, newDeficiency] });

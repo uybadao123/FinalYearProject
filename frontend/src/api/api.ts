@@ -8,7 +8,6 @@ const apiClient = async (endpoint: string, options: RequestInit = {}) => {
   if (!user) throw new Error("Please log in to perform this action.");
 
   try {
-    // Current user token retrieval for authenticated requests
     const token = await user.getIdToken();
 
     const headers = {

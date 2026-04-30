@@ -35,7 +35,7 @@ class DSSService:
         t_k = targets.get('k', 0) / total_target
 
         for item in inventory:
-            # Next, normalize fertilizer composition to relative ratios
+            # Normalize fertilizer composition to relative ratios
             n_pct = item.get('n_pct', 0)
             p_pct = item.get('p_pct', 0)
             k_pct = item.get('k_pct', 0)
@@ -195,7 +195,7 @@ class DSSService:
                     fert_pct = best_fert.get(f'{nutrient}_pct', 0)
                     
                     if target_val > 0 and fert_pct > 0:
-                        #(Target / %Phân) * Volume * k_media
+                        #(Target / %Fertilzier) * Volume * k_media
                         d = (target_val / (fert_pct / 100)) * volume * k_media
                         dosages.append(d)
                 
@@ -207,13 +207,13 @@ class DSSService:
             else:
                 stage_prescriptions[stage] = {"name": "N/A", "dosage": 0}
 
-        # 3. Xử lý ngày bắt đầu
+        #Handle start day
         try:
             dt_start = datetime.fromisoformat(plot['start_date'].replace('Z', '+00:00'))
         except:
             dt_start = datetime.utcnow()
 
-        # 4. Tạo lịch trình dựa trên bước nhảy mong muốn
+        #Create schedule
         full_schedule = []
         current_day = 1
         stage_freqs = crop_meta.get('stage_frequency', {})

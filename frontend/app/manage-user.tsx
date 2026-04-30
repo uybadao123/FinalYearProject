@@ -42,7 +42,6 @@ export default function ManageUserScreen() {
     const [refreshing, setRefreshing] = useState(false);
     const [stats, setStats] = useState({ totalUsers: 0, admins: 0, collaborators: 0, gardeners: 0 });
 
-    // Modal states
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
     const [showRoleModal, setShowRoleModal] = useState(false);
     const [updatingRoleFor, setUpdatingRoleFor] = useState<string | null>(null);
@@ -57,7 +56,7 @@ export default function ManageUserScreen() {
         checkAdminStatus();
     }, [user]);
 
-    // Fetch users when admin verified
+  
     useEffect(() => {
         if (isAdmin) {
             fetchUsers();

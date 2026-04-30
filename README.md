@@ -30,7 +30,7 @@ A mobile application designed to support urban horticulture enthusiasts in manag
 
 ### Media Management
  
- **Cloudinary** for image management
+- **Cloudinary** for image management
 
 ## Prerequisites
 
@@ -119,7 +119,6 @@ The backend will be available at `http://localhost:8000`
 
 Once the backend is running, you can access the interactive API documentation at:
 - Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
 
 ## Project Structure
 

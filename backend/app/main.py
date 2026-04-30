@@ -28,6 +28,7 @@ app.include_router(garden.router, prefix="/api/v1/garden", tags=["Garden Managem
 app.include_router(user.router, prefix="/api/v1/user", tags=["User Management API"])
 app.include_router(location.router, prefix="/api/v1/location", tags=["Location API"])
 
+
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
     start_time = time.time()

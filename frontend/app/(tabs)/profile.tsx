@@ -9,17 +9,14 @@ import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons, FontAwesome5, Feather } from '@expo/vector-icons';
 
-// Firebase & API Service
 import { auth } from '../../src/config/firebase';
 import { api } from '../../src/api/api';
 
 export default function ProfileScreen() {
-  // Router & Auth
   const router = useRouter();
   const user = auth.currentUser;
   if (!user) return router.push("/login");
 
-  // State for profile data, stats, loading and refreshing status
   const [profile, setProfile] = useState<any>(null);
   const [stats, setStats] = useState({ gardens: 0, plots: 0 });
   const [loading, setLoading] = useState(true);
@@ -208,7 +205,6 @@ export default function ProfileScreen() {
   );
 }
 
-// Menu sub-component
 const MenuRow = ({ icon, label, onPress, bg, color }: any) => (
   <TouchableOpacity style={styles.menuRowItem} onPress={onPress}>
     <View style={[styles.menuIconContainer, { backgroundColor: bg }]}>

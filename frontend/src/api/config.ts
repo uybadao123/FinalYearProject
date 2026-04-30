@@ -3,8 +3,8 @@
 const BASE_IP = "10.0.2.2";
 const PORT = "8000";
 
-const CLOUD_NAME = '';
-const UPLOAD_PRESET_VALUE = '';
+const CLOUD_NAME = 'do8tedem8';
+const UPLOAD_PRESET_VALUE = 'crop_app_preset';
  
 export const UPLOAD_PRESET = UPLOAD_PRESET_VALUE
 export const IMAGE_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
