@@ -59,8 +59,8 @@ export default function LoginScreen() {
         <View style={styles.logoCircle}>
           <MaterialIcons name="eco" size={48} color="#1B5E20" />
         </View>
-        <Text style={styles.title}>Welcome Back</Text>
-        <Text style={styles.subtitle}>Sign in to manage your precision garden.</Text>
+        <Text style={styles.title}>Welcome to Green Urban</Text>
+        <Text style={styles.subtitle}>- Happy Urban Horticulture -</Text>
       </View>
 
       <View style={[styles.card, styles.shadow]}>

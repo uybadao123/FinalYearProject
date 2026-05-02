@@ -8,6 +8,7 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../../src/config/firebase';
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ForgotPasswordScreen() {
     const [email, setEmail] = useState('');
@@ -49,17 +50,10 @@ export default function ForgotPasswordScreen() {
     };
 
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        <SafeAreaView
             style={styles.container}
         >
             <View style={styles.header}>
-                <TouchableOpacity
-                    onPress={() => router.back()}
-                    style={styles.backButton}
-                >
-                    <MaterialIcons name="arrow-back" size={28} color="#1B5E20" />
-                </TouchableOpacity>
 
                 <View style={styles.logoCircle}>
                     <MaterialIcons name="lock-reset" size={48} color="#1B5E20" />
@@ -104,7 +98,7 @@ export default function ForgotPasswordScreen() {
                     </Text>
                 </TouchableOpacity>
             </View>
-        </KeyboardAvoidingView>
+        </SafeAreaView>
     );
 }
 
@@ -112,7 +106,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FBFCFC',
-        justifyContent: 'center',
         padding: 25,
     },
 

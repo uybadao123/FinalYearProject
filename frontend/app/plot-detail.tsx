@@ -129,6 +129,9 @@ export default function PlotDetailScreen() {
     }
   };
 
+  const isFeedingDay = schedule.some(item => item.day_number === dayAndStage?.age);
+
+
   if (loading) return <ActivityIndicator style={styles.center} size="large" color="#1B5E20" />;
 
   return (
@@ -142,7 +145,7 @@ export default function PlotDetailScreen() {
           <Text style={styles.title}>{plotData?.plot_name || "Plot Details"}</Text>
           <View style={styles.statusBadge}>
             <View style={styles.statusDot} />
-            <Text style={styles.statusText}>PLOT ACTIVE</Text>
+            <Text style={styles.statusText}>ACTIVE PLOT</Text>
           </View>
         </View>
       </View>
@@ -183,12 +186,13 @@ export default function PlotDetailScreen() {
           <View style={styles.recomHeader}>
             <View style={styles.aiBadge}>
               <MaterialIcons name="auto-awesome" size={14} color="#fff" />
-              <Text style={styles.aiBadgeText}>RECOMMENDED</Text>
+              <Text style={styles.aiBadgeText}>
+                {isFeedingDay ? "REQUIRED TODAY" : "PLANT STATUS"}
+              </Text>
             </View>
-            {isSyncing && <ActivityIndicator size="small" color="#fff" />}
           </View>
 
-          {recommendation ? (
+          {recommendation && isFeedingDay ? (
             <>
               <View style={styles.dosageBox}>
                 <Text style={styles.dosageValue}>{recommendation.dosage}<Text style={{ fontSize: 18 }}>g</Text></Text>
@@ -204,14 +208,22 @@ export default function PlotDetailScreen() {
                 <Text style={styles.reasonText}>{recommendation.recommendation_text}</Text>
               </View>
 
-              <TouchableOpacity style={styles.applyBtn} onPress={handleFertilize} disabled={isSyncing}>
+              <TouchableOpacity style={styles.applyBtn} onPress={handleFertilize}>
                 <Text style={styles.applyBtnText}>CONFIRM FERTILIZATION</Text>
               </TouchableOpacity>
             </>
+
           ) : (
-            <Text style={styles.emptyText}>No recommendations available. Please check your fertilizer inventory.</Text>
+
+            <View style={{ paddingVertical: 10 }}>
+              <Text style={styles.emptyText}>
+                No action needed! 
+                {schedule.length > 0 && ` Next dosage is the day ${schedule.find(i => i.day_number > (dayAndStage?.age || 0))?.day_number || '...'}.`}
+              </Text>
+            </View>
           )}
         </View>
+
 
         {/* Timeline Section */}
         <Text style={styles.sectionTitle}>Fertilizing Schedule</Text>
@@ -254,6 +266,7 @@ export default function PlotDetailScreen() {
           )}
         </View>
 
+
         {/* History Section */}
         <Text style={styles.sectionTitle}>Fertilizer History</Text>
         {logs.length > 0 ? logs.map((log) => (
@@ -273,6 +286,7 @@ export default function PlotDetailScreen() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#FBFCFC', paddingHorizontal: 20 },
