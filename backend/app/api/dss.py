@@ -38,10 +38,7 @@ async def sync_dashboard_activities(current_user_id: str = Depends(get_current_u
 
 @router.post("/calculate-next-dosage", response_model=NutrientResponse)
 async def calculate_nutrient_dosage(request: NutrientRequest, current_user_id: str = Depends(get_current_user_id)):
-    recommendation = await DSSService.get_recommendation(
-        user_id=current_user_id,
-        plot_id=request.plot_id,
-        fertilizer_inventory=request.fertilizer_inventory)
+    recommendation = await DSSService.get_recommendation(user_id=current_user_id,plot_id=request.plot_id,fertilizer_inventory=request.fertilizer_inventory)
     if not recommendation:
         raise HTTPException(status_code=404, detail="No recommendation generated.")
     

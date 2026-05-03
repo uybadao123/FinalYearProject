@@ -7,7 +7,6 @@ from app.services.user_authorization_services import get_current_user_id
 router = APIRouter()
 
 
-
 # --- ZONE MANAGEMENT ---
 @router.get("/zones")
 async def get_all_zones(current_user: dict = Depends(get_current_user_id)):

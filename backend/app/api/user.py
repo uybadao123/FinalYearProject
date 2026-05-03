@@ -16,11 +16,11 @@ async def create_profile(profile: UserProfile):
     
 
 @router.get("/profile/{uid}", response_model=UserProfile)
-async def get_profile_by_uid(uid: str, current_user_id: dict = Depends(get_current_user_id)):
+async def get_profile_by_uid(uid: str):
     uid = get_current_user_id(uid)
     profile = DBService.get_user_profile(uid)
     if not profile:
-        raise HTTPException(status_code=404, detail="Không tìm thấy người dùng")
+        raise HTTPException(status_code=404, detail="User not found")
     return profile
 
 
@@ -60,7 +60,7 @@ async def get_all_users(current_user_id: dict = Depends(get_current_user_id)):
     current_profile = DBService.get_user_profile(current_user_id)
     print(current_profile)
     if not current_profile or current_profile["role"] != "admin":
-        raise HTTPException(status_code=403, detail="Bạn không có quyền truy cập thông tin này")
+        raise HTTPException(status_code=403, detail="Unauthorized Acess to get all user details")
     try:
         users = DBService.get_all_users()
 
@@ -74,7 +74,7 @@ async def get_all_users(current_user_id: dict = Depends(get_current_user_id)):
 async def admin_update_user_role(data: dict, current_user_id: dict = Depends(get_current_user_id)):
     current_profile = DBService.get_user_profile(current_user_id)
     if not current_profile or current_profile['role'] != "admin":
-        raise HTTPException(status_code=403, detail="Bạn không có quyền truy cập thông tin này")
+        raise HTTPException(status_code=403, detail="Unauthorized Acess ")
     
     target_uid = data.get("uid")
     new_role = data.get("role")

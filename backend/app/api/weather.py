@@ -32,12 +32,12 @@ async def get_weather(
         return await service.get_current_weather(lat=lat, lon=lon)
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=f"Weather service error: {str(e)}")
-    
+
+
 @router.get("/k-env/{garden_id}")
 async def get_garden_k_env(
     garden_id: str,
     service: WeatherService = Depends(get_weather_service),
-    location_svc = Depends(LocationService.get_garden_zone_coordinates),
     current_user: dict = Depends(get_current_user_id)
 ):
-    return await service.get_k_env_by_garden_id(garden_id, location_svc, current_user["uid"])
+    return await service.get_k_env_by_garden_id(garden_id, current_user["uid"])

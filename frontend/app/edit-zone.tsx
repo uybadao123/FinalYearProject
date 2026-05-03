@@ -23,7 +23,6 @@ export default function EditZoneScreen() {
   const router = useRouter();
   const mapRef = useRef<MapView | null>(null);
 
-  // States
   const [name, setName] = useState(params.name as string || '');
   const [description, setDescription] = useState(params.description as string || '');
   const [zoneType, setZoneType] = useState(params.type as string || 'rooftop');
