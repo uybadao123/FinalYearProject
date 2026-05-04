@@ -1,15 +1,13 @@
 # HappyUrbanHorticulture
 
-A mobile application designed to support urban horticulture enthusiasts in managing their gardens, crops, and decision-making processes. This project combines a React Native frontend with a Python FastAPI backend to provide a comprehensive tool for sustainable urban gardening.
+A mobile application designed to support urban horticulture enthusiasts in managing their gardens, crops, and decision-making processes. This project combines a React Native frontend with a Python backend using FastAPI to provide a comprehensive tool for sustainable urban gardening.
 
 ## Features
 
 - **Garden Management**: Create and manage multiple garden plots and zones
 - **Crop Tracking**: Add, edit, and monitor various crops with detailed information
-- **Fertilizer Management**: Manage fertilizer presets and applications
-- **Decision Support System (DSS)**: Get recommendations for optimal crop care
+- **Decision Support System (DSS)**: Get fertilize recommendations for optimal crop care
 - **Weather Integration**: Access weather data for informed gardening decisions
-- **Soil Analysis**: Track soil properties and media
 - **User Authentication**: Secure user management with Firebase
 - **Location Services**: GPS-based location tracking for garden sites
 
@@ -158,4 +156,4 @@ Once the backend is running, you can access the interactive API documentation at
 - Built with Expo and React Native
 - Powered by FastAPI and Python
 - Firebase for backend services
-- Couldinary for media service management (image)
+- Couldinary for media service management
